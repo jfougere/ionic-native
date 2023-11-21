@@ -80,7 +80,7 @@ export class AdjustConfig {
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
-  private coppaCompliantEnabled: boolean = null; 
+  private coppaCompliantEnabled: boolean = null;
   private playStoreKidsAppEnabled: boolean = null; // Android only
   private linkMeEnabled: boolean = null; // iOS only
   private finalAndroidAttributionEnabled: boolean = null; // Android only
@@ -230,7 +230,9 @@ export class AdjustConfig {
     this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
   }
 
-  setSkad4ConversionValueUpdatedCallbackListener(skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void) {
+  setSkad4ConversionValueUpdatedCallbackListener(
+    skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void
+  ) {
     this.skad4ConversionValueUpdatedCallback = skad4ConversionValueUpdatedCallback;
   }
 
@@ -441,7 +443,7 @@ export class AdjustAdRevenue {
 
 export class AdjustAppStorePurchase {
   private receipt: string;
-  private receipt: string;
+  private productId: string;
   private transactionId: string;
 
   constructor(receipt: string, productId: string, transactionId: string) {
@@ -551,10 +553,10 @@ export enum AdjustAdRevenueSource {
   AdRevenueSourceMopub = 'mopub',
   AdRevenueSourceAdMob = 'admob_sdk',
   AdRevenueSourceIronSource = 'ironsource_sdk',
-  AdRevenueSourceAdMost = "admost_sdk",
-  AdRevenueSourceUnity = "unity_sdk",
-  AdRevenueSourceHeliumChartboost = "helium_chartboost_sdk",
-  AdRevenueSourcePublisher = "publisher_sdk",
+  AdRevenueSourceAdMost = 'admost_sdk',
+  AdRevenueSourceUnity = 'unity_sdk',
+  AdRevenueSourceHeliumChartboost = 'helium_chartboost_sdk',
+  AdRevenueSourcePublisher = 'publisher_sdk',
 }
 
 /**
@@ -610,7 +612,6 @@ export enum AdjustAdRevenueSource {
 })
 @Injectable()
 export class Adjust extends AwesomeCordovaNativePlugin {
-
   /**
    * This method initializes Adjust SDK
    *
@@ -729,7 +730,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
+   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes.
    * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
    */
   @Cordova({ sync: true })
@@ -899,7 +900,9 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * @param {AdjustAppStorePurchase} purchase Adjust App Store purchase object to be verified
    */
   @Cordova()
-  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
+  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
+    return;
+  }
 
   /**
    * This method is used to verify the Play Store purchase
@@ -907,5 +910,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * @param {AdjustPlayStorePurchase} purchase Adjust Play Store purchase object to be verified
    */
   @Cordova()
-  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
+  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
+    return;
+  }
 }
